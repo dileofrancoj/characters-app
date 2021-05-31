@@ -1,9 +1,15 @@
 import { Col } from "react-bootstrap";
+import { iCharacter } from "../../types/character";
+export interface iCharacterProps {
+  character: iCharacter;
+}
 
-const Character = (): JSX.Element => {
+const Character: React.FC<iCharacterProps> = ({
+  character,
+}: iCharacterProps): JSX.Element => {
   return (
     <Col md={8} className="mt-2 mb-2">
-      <p>Personajes</p>
+      <p>{character.name}</p>
     </Col>
   );
 };

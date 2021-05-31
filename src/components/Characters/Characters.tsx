@@ -6,17 +6,17 @@ import Loading from "../common/Loading";
 
 const Characters = (): JSX.Element => {
   const [characters, loading] = useFetch("character");
-  console.log(characters);
+  const { results }: { results: iCharacter[] } = characters;
 
   if (loading) return <Loading />;
 
   return (
     <>
       <Row className="justify-content-center mt-5">
-        {characters?.results &&
-          characters.results.length > 0 &&
-          characters.results.map((character: iCharacter) => (
-            <Character key={character.id} />
+        {results &&
+          results.length > 0 &&
+          results.map((character: iCharacter) => (
+            <Character key={character.id} character={character} />
           ))}
       </Row>
     </>
